@@ -228,7 +228,7 @@ function updateDisplayValue(clickedButton){
                 displayValue += clickedButton;
             }
             else {
-                    alert("You can't add two decimals")
+                    alert("You can't add two decimals dots!")
             }            
             break;
 
