@@ -101,147 +101,148 @@ function updateDisplayValue(clickedButton){
             }
             break;
         
-            case "-":
-                selectedOperator = "-"
-                if(repatitiveEntry == false){
-                    repatitiveEntry = true
-                    console.log(displayValue)
-                    preOperatorNum = displayValue
-                    console.log(values)
-                    values[0] = preOperatorNum;
-                    values[1] = selectedOperator;
-                    displayValue = ''
-                    showValue(displayValue)
-                    console.log("first click")
-                    console.log(values)
-                }
-                else {
-                    postOperatorNum = displayValue
+        case "-":
+            selectedOperator = "-"
+            if(repatitiveEntry == false){
+                repatitiveEntry = true
+                console.log(displayValue)
+                preOperatorNum = displayValue
+                console.log(values)
+                values[0] = preOperatorNum;
+                values[1] = selectedOperator;
+                displayValue = ''
+                showValue(displayValue)
+                console.log("first click")
+                console.log(values)
+            }
+            else {
+                postOperatorNum = displayValue
+                values[2] = postOperatorNum
+                
+                console.log("second press")
+                console.log(values)
+                lastResult = operate(values[1], values[0], values[2])
+                values[1] = selectedOperator;
+                
+                displayValue = ''
+                showValue(lastResult)
+                values[0] = lastResult
+            }
+            break;
+
+        case "*":
+            selectedOperator = "*"
+            if(repatitiveEntry == false){
+                repatitiveEntry = true
+                console.log(displayValue)
+                preOperatorNum = displayValue
+                console.log(values)
+                values[0] = preOperatorNum;
+                values[1] = selectedOperator;
+                displayValue = ''
+                showValue(displayValue)
+                console.log("first click")
+                console.log(values)
+            }
+            else {
+                postOperatorNum = displayValue
+                values[2] = postOperatorNum
+                
+                console.log("second press")
+                console.log(values)
+                lastResult = operate(values[1], values[0], values[2])
+                values[1] = selectedOperator;
+                
+                displayValue = ''
+                showValue(lastResult)
+                values[0] = lastResult
+            }
+            break;
+
+        case "/":
+            selectedOperator = "/"
+            if(repatitiveEntry == false){
+                repatitiveEntry = true
+                console.log(displayValue)
+                preOperatorNum = displayValue
+                console.log(values)
+                values[0] = preOperatorNum;
+                values[1] = selectedOperator;
+                displayValue = ''
+                showValue(displayValue)
+                console.log("first click")
+                console.log(values)
+            }
+            else {
+                postOperatorNum = displayValue
+                
+                
                     values[2] = postOperatorNum
-                    
+                
                     console.log("second press")
                     console.log(values)
+                    
                     lastResult = operate(values[1], values[0], values[2])
                     values[1] = selectedOperator;
-                    
-                    displayValue = ''
-                    showValue(lastResult)
-                    values[0] = lastResult
+                
+                
+                displayValue = ''
+                showValue(lastResult)
+
+                values[0] = lastResult
+            }
+            break;
+
+        case "=":
+            console.log(values[0])
+            console.log(values[1])
+            console.log(values[2])
+            
+        
+                repatitiveEntry = true;
+                postOperatorNum = displayValue;
+                values[2] = postOperatorNum;
+                console.log(values)
+                if(values[0] == undefined || values[1] == undefined || values[2] == ""){
+                    alert("you didnt enter sufficent entries");
                 }
-                break;
+                else{
+                    lastResult = operate(values[1], values[0], values[2])
+                    // displayValue = ''
+                    displayValue =''
+                    showValue(lastResult);
+                    values[0] = lastResult
+                    console.log(lastResult);
+            }  
+            break;
 
-                case "*":
-                    selectedOperator = "*"
-                    if(repatitiveEntry == false){
-                        repatitiveEntry = true
-                        console.log(displayValue)
-                        preOperatorNum = displayValue
-                        console.log(values)
-                        values[0] = preOperatorNum;
-                        values[1] = selectedOperator;
-                        displayValue = ''
-                        showValue(displayValue)
-                        console.log("first click")
-                        console.log(values)
-                    }
-                    else {
-                        postOperatorNum = displayValue
-                        values[2] = postOperatorNum
-                        
-                        console.log("second press")
-                        console.log(values)
-                        lastResult = operate(values[1], values[0], values[2])
-                        values[1] = selectedOperator;
-                        
-                        displayValue = ''
-                        showValue(lastResult)
-                        values[0] = lastResult
-                    }
-                    break;
+        case "←":
+            if (displayValue.length > 0){
+                displayValue = displayValue.slice(0,-1);
+                showValue(displayValue)
+            }
+            break;
 
-                    case "/":
-                        selectedOperator = "/"
-                        if(repatitiveEntry == false){
-                            repatitiveEntry = true
-                            console.log(displayValue)
-                            preOperatorNum = displayValue
-                            console.log(values)
-                            values[0] = preOperatorNum;
-                            values[1] = selectedOperator;
-                            displayValue = ''
-                            showValue(displayValue)
-                            console.log("first click")
-                            console.log(values)
-                        }
-                        else {
-                            postOperatorNum = displayValue
-                           
-                            
-                                values[2] = postOperatorNum
-                            
-                                console.log("second press")
-                                console.log(values)
-                                
-                                lastResult = operate(values[1], values[0], values[2])
-                                values[1] = selectedOperator;
-                            
-                            
-                            displayValue = ''
-                            showValue(lastResult)
+        case ".":
+            if(!displayValue.includes(".")){
+                displayValue += clickedButton;
+            }
+            else {
+                    alert("You can't add two decimals")
+            }            
+            break;
 
-                            values[0] = lastResult
-                        }
-                        break;
-
-                    case "=":
-                        console.log(values[0])
-                        console.log(values[1])
-                        console.log(values[2])
-                        
-                    
-                            repatitiveEntry = true;
-                            postOperatorNum = displayValue;
-                            values[2] = postOperatorNum;
-                            console.log(values)
-                            if(values[0] == undefined || values[1] == undefined || values[2] == ""){
-                                alert("you didnt enter sufficent entries");
-                            }
-                            else{
-                                lastResult = operate(values[1], values[0], values[2])
-                                // displayValue = ''
-                                displayValue =''
-                                showValue(lastResult);
-                                values[0] = lastResult
-                                console.log(lastResult);
-                        }  
-                        break;
-                    case "←":
-                        if (displayValue.length > 0){
-                            displayValue = displayValue.slice(0,-1);
-                            showValue(displayValue)
-                        }
-                        break;
-
-                    case ".":
-                        if(!displayValue.includes(".")){
-                            displayValue += clickedButton;
-                        }
-                        else {
-                             alert("You can't add two decimals")
-                    }
-                       
-                        break;
-                    default:
-                        postOperatorNum = displayValue;
-                        values[2] = postOperatorNum;
-                        lastResult = operate(values[1], values[0], values[2])
-                        console.log("number clicked")
-                        console.log(values)
-                        console.log(displayValue)    
-                        displayValue += clickedButton;
-                        showValue(displayValue)
-                        console.log(displayValue)
-                        break; 
+        default:
+            postOperatorNum = displayValue;
+            values[2] = postOperatorNum;
+            lastResult = operate(values[1], values[0], values[2])
+            console.log("number clicked")
+            console.log(values)
+            console.log(displayValue)    
+            displayValue += clickedButton;
+            showValue(displayValue)
+            console.log(displayValue)
+            break; 
     }    
 }
 
@@ -252,5 +253,4 @@ buttons.map(singleButton => {
         
     });
 });
-
 

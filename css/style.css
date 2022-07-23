@@ -10,7 +10,7 @@
     height: 50px;
     line-height: 50px;
     padding: 20px;
-    font-size: 20;
+    font-size: 50px;
 }
 
 .buttons {
@@ -40,8 +40,6 @@
     font-size: 25px;
     cursor: pointer;
 }
-
-
 
 .button:hover{
     background-color: rgb(108, 106, 106);
